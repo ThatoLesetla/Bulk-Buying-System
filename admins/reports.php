@@ -74,7 +74,8 @@ if (empty($_SESSION['cell'])) {
 
             <h4>
                 <form action="">
-                    <label>
+                <div id="vendor_repot">
+                <label>
                         <input id="typeOfSam" name="typeOfSam" type="radio" value="1" checked/>
                         <span>All</span>
                     </label>
@@ -91,6 +92,44 @@ if (empty($_SESSION['cell'])) {
                         <span>3 Months Samury</span>
                     </label>
                     <button class="btn blue lighten-2 waves-effect waves-dark eound-btn right" id="btn_print">Print Data</button>
+                </div>
+                <!--products-->
+                <div id="products_reports">
+                <button class="btn blue lighten-2 waves-effect waves-dark eound-btn right" id="btn_print">Print Data</button>
+                <div class="container">
+                <div class="row">
+                
+                <div class="input-field col s4">
+                    <input  id="srcVendor" type="text" class="validate">
+                    <label class="active" for="srcVendor">Search by Vendor Name...</label>
+                    </div>
+                    <div class="input-field col s4">
+                        <input type=text name="bdate" id="bdate" class="datepicker" required>
+                        <label for="bdate">Search by Date..</label>
+                    </div>
+                    <div class="input-field col s4">
+                    <input  id="srcPrice" type="text" class="validate">
+                    <label class="active" for="srcPrice">Search by Product Price(eg 100)...</label>
+                    </div>
+                    
+                </div>
+                </div>
+                
+
+                    
+               
+                
+              
+                </div>
+                <!--customers-->
+                <div id="cus_reports">
+                <div class="input-field col s4">
+                    <input  id="srcPro" type="text" class="validate">
+                    <label class="active" for="srcPro">Search by Product Name...</label>
+                    </div>
+                <button class="btn blue lighten-2 waves-effect waves-dark eound-btn right" id="btn_print">Print Data</button>
+                </div>
+                   
                 </form>
             </h4>
 
@@ -108,9 +147,21 @@ if (empty($_SESSION['cell'])) {
     <script type="text/javascript" src="script/jquery.PrintArea.js"></script>
 
     <script>
+    $('#vendor_repot').slideUp();
+    $('#products_reports').slideUp();
+    $('#cus_reports').slideUp();
+    
         $(document).ready(function() {
 
-
+            var currYear = (new Date()).getFullYear();
+            //var month = (new Date()).getFullMonth();
+                    $(".datepicker").datepicker({
+                defaultDate: new Date(currYear,1,31),
+                // setDefaultDate: new Date(2000,01,31),
+                maxDate: new Date(currYear+5,12,31),
+                yearRange: [2019, currYear],
+                format: "yyyy/mm/dd"    
+            });
             //Init Modal
             $('.modal').modal();
 
@@ -180,6 +231,10 @@ if (empty($_SESSION['cell'])) {
 
             $('#btn_Std').click(function (e) { 
                 e.preventDefault();
+                $('#vendor_repot').slideDown();
+                $('#products_reports').slideUp();
+                $('#cus_reports').slideUp();
+                
                 stdSammury();
             })
 
@@ -190,6 +245,9 @@ if (empty($_SESSION['cell'])) {
 
             $('#btn_Book').click(function (e) { 
                 e.preventDefault();
+                $('#vendor_repot').slideUp();
+                $('#products_reports').slideDown();
+                $('#cus_reports').slideUp();
                 bookSammury();
             });
 
