@@ -1,0 +1,75 @@
+
+
+<div class="container">
+    <h4>Add Product</h4>
+    <div class="divider"></div>
+    <form action="" method="POST" enctype="multipart/form-data">
+
+        <div class="input-field">
+            <input id="name" type="text" class="validate">
+            <label for="name">Product Name</label>
+        </div>
+
+        <div class="input-field">
+            <input id="price" type="number" class="validate">
+            <label for="price">Product Price</label>
+        </div>
+        <div class="input-field">
+            <input id="stock" type="number" class="validate">
+            <label for="stock">Stock Amount</label>
+        </div>
+        <div class="input-field">
+            <input id="point" type="number" class="validate">
+            <label for="point">Re-Order Point</label>
+        </div>
+        <div class="input-field">
+            <input id="des" type="text" class="validate">
+            <label for="des">Product Description</label>
+        </div>
+       
+     
+
+        <div id="result"></div>
+        <div class="input-field">
+            <button type="submit" name="submit"  id="submrk" class="lighten-2 waves-effect waves-light btn" onchange="showUser('loop')" >Add</button>
+           
+        </div>
+    </form>
+   
+</div>
+
+<script>
+    $(document).ready(function(){
+       
+
+        $('#submrk').click(function(e) {
+            e.preventDefault();
+           
+            var name = $('#name').val();
+            var price = $('#price').val();
+            var des = $('#des').val();
+            var point =$('#point').val();
+            var stock =$('#stock').val();
+    
+            $.ajax({
+                type: "post",
+                url: "addPros.php",
+                data: {
+                  name:name,
+                  price:price,
+                  des: des,
+                  point:point,
+                  stock:stock
+                 
+                },
+                success: function(response) {
+                    $('#result').html(response);
+                }
+            });
+    
+    });
+        });
+
+    
+
+</script>

@@ -1,0 +1,45 @@
+<div class="container">
+        <h4>Register Locations</h4>
+        <div class="divider"></div>
+        <div class="row">
+            <span class="col m12">
+                <div class="col m8 push-m2">
+                    <form action="" method="post" class="col m12">
+                        <div class="input-field">
+                            <input type="text" name="loc" id="loc">
+                            <label for="loc">Enter Location</label>
+                        </div>
+                        <div id="output"></div>
+        
+                        <div class="input-field">
+                                <a href="" class="modal-action modal-close btn grey darken-4 waves-effect waves-blue round-btn"
+                                style="border: #909090 thin solid;"><i class="fa fa-close"></i> Cancel</a>
+                            <button name="btn_save_loc" id="btn_save_loc" class="btn blue lighten-2 waves-effect waves-dark round-btn">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </span>
+        </div>
+</div>
+
+<script>
+    $('#btn_save_loc').click(function (e) {
+        e.preventDefault();
+
+        var loc = $('#loc').val();
+
+        $.ajax({
+            type: "post",
+            url: "save_loc.php",
+            data: {
+                loc: loc,
+            },
+            success: function (response) {
+                $('#output').html(response);
+               
+                
+            }
+        });
+
+    });
+</script>

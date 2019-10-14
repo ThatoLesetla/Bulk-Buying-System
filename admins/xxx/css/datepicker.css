@@ -1,0 +1,31 @@
+/* ===================================================================================
+ *
+ * Datepicker with style and language customized to any language!
+ * Custom Example - Language Portuguese (Brazil) and orange theme
+ * Visit: http://materializecss.com/ 
+ * 
+ * Author: Frederico S. Rocha
+ * Contact: @fredsrocha
+ * License: The MIT License (MIT)
+ *
+ * ===================================================================================
+ */
+ .picker { outline: none; } /* Optional feature */
+ /* Header - Day of the week */
+ .picker__weekday-display { background-color: rgb(236, 30, 30);
+     font-weight: 600;}
+ /* Body - Today info */
+ .picker__date-display { background-color: rgb(121,134,203); }
+ /* Buttons of actions */
+ .picker__nav--prev:hover { background-color: #fff3e0; }
+ .picker__nav--next:hover { background-color: #fff3e0; }
+ .picker__nav--prev:before {
+   border-left: 0;
+   border-right: 0.75em solid #0F74BD;
+ }
+ .picker__nav--next:before {
+   border-right: 0;
+   border-left: 0.75em solid #0F74BD;
+ }
+ .picker__today { color: #15F384; }
+ 

@@ -1,0 +1,64 @@
+body {
+	width: 100%;
+	
+}
+.text-justify {
+	text-align: justify;
+}
+
+.pushed_top {
+	margin-top: 100px;
+}
+
+.pushed_bottom {
+	margin-bottom: 100px;
+}
+
+.round-btn {
+	border-radius: 20px;
+	transition: all 0.5s ease-in-out;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+}
+
+.btn_load {
+	border-radius: 0px;
+	transition: all 0.5s ease-in-out;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+}
+
+#today {
+	padding: 15px;
+	border: solid rgb(207, 207, 207) thin;
+	border-radius: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+	body {
+		font-size: 90%;
+	}
+}
+
+.datepicker-date-display {
+	background-color: #08acea;
+}
+
+.datepicker-day-button:focus {
+	color: #fff !important;
+	background-color: #08acea;
+}
+
+.datepicker-done, .datepicker-cancel, .selected-dropdown li>span, .is-today {
+	color: #08acea !important;
+}
+
+td.is-selected, .month-prev:active, .month-prev:focus, .month-next:active, .month-next:focus {
+	background-color: #08acea !important;
+}
+
+td.is-selected.is-today {
+	color: #222 !important;
+}
