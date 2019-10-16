@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="script/bootbox.min.js"></script>
 </head>
 <style>
     #linklog {
