@@ -34,7 +34,7 @@ if (count($errors) == 0) {
         if ($result) {
             if (mysqli_num_rows($result) == 1) {
                 $_SESSION['phone'] = $cell;
-                echo '<script>window.location.assign("vendor.php");</script>';
+                echo '<script>window.location.assign("../vendor.php");</script>';
             } else {
                 array_push($errors, 'Incorrect Combination of Cell and Password');
             }
@@ -48,7 +48,7 @@ if (count($errors) == 0) {
         if ($result) {
             if (mysqli_num_rows($result) == 1) {
                 $_SESSION['phone'] = $cell;
-                echo '<script>window.location.assign("customer.php");</script>';
+                echo '<script>window.location.assign("onlinestore/index.php");</script>';
             } else {
                 array_push($errors, 'Incorrect Combination of Contacts and Password');
             }
