@@ -310,7 +310,7 @@ include '../errors.php';
 							</div>
 						</div>
 						<div id="after"></div>
-							</br>
+						</br>
 						<a href="#!" id="placeOrder" class="btn karl-checkout-btn">Place Order</a>
 					</div>
 				</div>
@@ -370,17 +370,9 @@ include '../errors.php';
 			var cartItems = w3ls.cart;
 
 			var productAttributes = w3ls.cart.items();
-			console.log(total);
-
-			for (var i = 0; i < productAttributes.length; i++) {
-				var product = productAttributes[i]._data;
-				var quantity = product.quantity;
-				var productID = product.productID;
-				var paymentType = "EFT";
-				var customerID = "<?php echo $id; ?>";
-				console.log(productID);
-
-			}
+			var customerID = "<?php echo $id; ?>";
+			var paymentType = "EFT";
+			var orderDate = new Date();
 
 			$.ajax({
 				type: "POST",
@@ -388,13 +380,36 @@ include '../errors.php';
 				data: {
 					total: total,
 					customerID: customerID,
-					paymentType: paymentType
+					paymentType: paymentType,
+					orderDate: orderDate
 				},
 
 				success: function(response) {
 					$('#after').html(response);
 				}
 			});
+
+			for (var i = 0; i < productAttributes.length; i++) {
+				var product = productAttributes[i]._data;
+				var quantity = product.quantity;
+				var productID = product.productID;
+
+				$.ajax({
+					type: "POST",
+					url: "addOrderItems.php",
+					data: {
+						quantity: quantity,
+						orderDate: orderDate,
+						productID: productID
+					},
+
+					success: function(response) {
+						$('#after').html(response);
+					}
+				});
+			}
+
+
 
 			w3ls.cart.reset();
 
