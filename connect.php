@@ -1,5 +1,5 @@
 <?php
- $db = mysqli_connect('localhost', 'root', '', 'onstore');
+ $db = mysqli_connect('localhost', 'root', 'root', 'onestore');
  $db->set_charset('utf8mb4');
 
  if (!$db) {

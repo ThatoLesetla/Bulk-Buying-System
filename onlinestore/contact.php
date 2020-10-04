@@ -218,7 +218,7 @@ include '../errors.php';
 		<div class="container">
 			<div class="col-md-6 w3agile_newsletter_left">
 				<h3>Newsletter</h3>
-				<p>Excepteur sint occaecat cupidatat non proident, sunt.</p>
+				<p>Subscribe to our newsletter and get the best deals.</p>
 			</div>
 			<div class="col-md-6 w3agile_newsletter_right">
 				<form action="#" method="post">

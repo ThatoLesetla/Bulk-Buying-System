@@ -57,7 +57,7 @@
             <div class="container-fluid">
                 <a class="brand-logo">Bulk Buying System</a>
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                   
+
                 </ul>
             </div>
         </div>
@@ -157,12 +157,15 @@
                 var idno = $('#idNo').val();
                 var passW = $('#passW1').val();
 
-                
+
 
                 $.ajax({
                     type: "post",
                     url: "adm_login_process.php",
-                    data: {idno: idno, passW: passW},
+                    data: {
+                        idno: idno,
+                        passW: passW
+                    },
                     success: function(response) {
                         $('#result').html(response);
                     }
@@ -175,4 +178,4 @@
 
 
 
-</html> 
+</html>

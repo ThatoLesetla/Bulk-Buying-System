@@ -282,6 +282,7 @@ include '../errors.php';
 														<input type="hidden" name="add" value="1" />
 														<input type="hidden" name="w3ls_item" value="<?php echo $productName ?>" />
 														<input type="hidden" name="amount" value="<?php echo $productPrice ?>" />
+														<input type="hidden" name="productID" value="<?php echo $productID ?>">
 														<button type="submit" class="w3ls-cart">Add to cart</button>
 													</form>
 												</div>
@@ -353,6 +354,7 @@ include '../errors.php';
 									<input type="hidden" name="add" value="1" />
 									<input type="hidden" name="w3ls_item" value="Smart Phone" />
 									<input type="hidden" name="amount" value="245.00" />
+									<input type="hidden" name="productID" value="<?php echo $productID ?>">
 									<button type="submit" class="w3ls-cart">Add to cart</button>
 								</form>
 							</div>
@@ -853,6 +855,7 @@ include '../errors.php';
 												<input type="hidden" name="add" value="1">
 												<input type="hidden" name="w3ls_item" value="<?php echo $productName ?>">
 												<input type="hidden" name="amount" value="<?php echo $productPrice ?>">
+												<input type="hidden" name="productID" value="<?php echo $productID ?>">
 												<button type="submit" class="w3ls-cart">Add to cart</button>
 											</form>
 										</div>
@@ -915,7 +918,7 @@ include '../errors.php';
 	</div>
 	<!-- //newsletter -->
 	<!-- footer -->
-	<?php include('_footer.php')?>
+	<?php include('_footer.php') ?>
 	<!-- //footer -->
 	<!-- cart-js -->
 	<script src="js/minicart.js"></script>

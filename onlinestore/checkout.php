@@ -22,6 +22,8 @@ if (empty($_SESSION['phone'])) {
 		if (mysqli_num_rows($result) > 0) {
 			while ($row = mysqli_fetch_array($result)) {
 				$name = $row['name'];
+				$surname = $row['surname'];
+				$city = $row['city'];
 				$img = $row['img'];
 				$id = $row['customerID'];
 				$email = $row['email'];
@@ -181,48 +183,34 @@ include '../errors.php';
 
 						<div class="cart-page-heading">
 							<h5>Billing Address</h5>
-							<p>Enter your cupone code</p>
+
 						</div>
 
 						<form action="#" method="post">
 							<div class="row">
 								<div class="col-12 mb-3">
 									<label for="first_name">First Name <span>*</span></label>
-									<input type="text" class="form-control" id="first_name" value="" required>
+									<input type="text" value="<?php echo $name ?>" class="form-control" id="first_name" value="" required>
 								</div>
 								<div class="col-12 mb-3">
 									<label for="last_name">Last Name <span>*</span></label>
-									<input type="text" class="form-control" id="last_name" value="" required>
+									<input type="text" class="form-control" id="last_name" value="<?php echo $surname ?>" required>
 								</div>
 
 								<div class="col-12 mb-3">
-									<label for="street_address">Address <span>*</span></label>
-									<input type="text" class="form-control mb-3" id="street_address" value="">
-									</br>
-									<input type="text" class="form-control" id="street_address2" value="">
-								</div>
-								<div class="col-12 mb-3">
-									<label for="postcode">Postcode <span>*</span></label>
-									<input type="text" class="form-control" id="postcode" value="">
-								</div>
-								<div class="col-12 mb-3">
 									<label for="city">Town/City <span>*</span></label>
-									<input type="text" class="form-control" id="city" value="">
-								</div>
-								<div class="col-12 mb-3">
-									<label for="state">Province <span>*</span></label>
-									<input type="text" class="form-control" id="state" value="">
+									<input type="text" value="<?php echo $city ?>" class="form-control" id="city" value="">
 								</div>
 								<div class="col-12 mb-3">
 									<label for="phone_number">Phone No <span>*</span></label>
-									<input type="number" class="form-control" id="phone_number" min="0" value="">
+									<input type="number" class="form-control" value=<?php echo $cell ?> id="phone_number" min="0" value="">
 								</div>
 								<div class="col-12 mb-4">
 									<label for="email_address">Email Address <span>*</span></label>
-									<input type="email" class="form-control" id="email_address" value="">
+									<input type="email" class="form-control" value="<?php echo $email ?>" id="email_address" value="">
 								</div>
 
-								<div class="col-12">
+								<div class="col-12" style="margin-top: 20px;">
 									<div class="custom-control custom-checkbox d-block mb-2">
 										<input type="checkbox" class="custom-control-input" id="customCheck1">
 										<label class="custom-control-label" for="customCheck1">Terms and conitions</label>
@@ -241,7 +229,7 @@ include '../errors.php';
 					</div>
 				</div>
 
-				<div class="col-12 col-md-6 col-lg-5 ml-lg-auto">
+				<div class="col-12 col-md-6 col-lg-5 ml-lg-auto" style="padding-left: 55px;">
 					<div class="order-details-confirmation">
 
 						<div class="cart-page-heading">
@@ -251,10 +239,8 @@ include '../errors.php';
 
 						<ul class="order-details-form mb-4" id="orderList">
 							<li><span>Product</span> <span>Total</span></li>
-							<li><span>Cocktail Yellow dress</span> <span>$59.90</span></li>
-							<li><span>Subtotal</span> <span>$59.90</span></li>
 							<li><span>Shipping</span> <span>Free</span></li>
-							<li><span>Total</span> <span id="cartTotal">$59.90</span></li>
+							<li><span>Total</span> <span id="cartTotal"></span></li>
 						</ul>
 
 
@@ -268,7 +254,7 @@ include '../errors.php';
 
 								<div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
 									<div class="card-body">
-										<p>Discount percentage will be sent out soon your order is still being processed.</p>
+										<p></p>
 									</div>
 								</div>
 							</div>
@@ -280,7 +266,7 @@ include '../errors.php';
 								</div>
 								<div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
 									<div class="card-body">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo quis in veritatis officia inventore, tempore provident dignissimos.</p>
+										<p></p>
 									</div>
 								</div>
 							</div>
@@ -292,7 +278,7 @@ include '../errors.php';
 								</div>
 								<div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
 									<div class="card-body">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo sint repudiandae suscipit ab soluta delectus voluptate, vero vitae</p>
+										<p></p>
 									</div>
 								</div>
 							</div>
@@ -304,7 +290,7 @@ include '../errors.php';
 								</div>
 								<div id="collapseFour" class="collapse show" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
 									<div class="card-body">
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est cum autem eveniet saepe fugit, impedit magni.</p>
+										<p></p>
 									</div>
 								</div>
 							</div>
@@ -328,7 +314,7 @@ include '../errors.php';
 		<div class="container">
 			<div class="col-md-6 w3agile_newsletter_left">
 				<h3>Newsletter</h3>
-				<p>Excepteur sint occaecat cupidatat non proident, sunt.</p>
+				<p>Subscribe to our newsletter and get the best deals.</p>
 			</div>
 			<div class="col-md-6 w3agile_newsletter_right">
 				<form action="#" method="post">
@@ -366,7 +352,7 @@ include '../errors.php';
 		order.addEventListener('click', placeOrder);
 
 		function placeOrder() {
-			alert("script is working");
+
 			var cartItems = w3ls.cart;
 
 			var productAttributes = w3ls.cart.items();
@@ -386,14 +372,16 @@ include '../errors.php';
 
 				success: function(response) {
 					$('#after').html(response);
+
 				}
 			});
 
-			for (var i = 0; i < productAttributes.length; i++) {
+
+			/*for (var i = 0; i < productAttributes.length; i++) {
 				var product = productAttributes[i]._data;
 				var quantity = product.quantity;
 				var productID = product.productID;
-
+				console.log(product);
 				$.ajax({
 					type: "POST",
 					url: "addOrderItems.php",
@@ -407,11 +395,14 @@ include '../errors.php';
 						$('#after').html(response);
 					}
 				});
-			}
+			}*/
 
 
 
-			w3ls.cart.reset();
+			alert('Discount percentage will be sent out soon your order is still being processed.');
+			//w3ls.cart.cartItems().
+		
+		
 
 		}
 	</script>

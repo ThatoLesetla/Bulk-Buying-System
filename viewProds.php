@@ -106,8 +106,9 @@ if (empty($_SESSION['phone'])) {
       all checked
     </label>
   </div>
+  <a class="btn-floating" id="selectedBox">Delete Selected</a>
   </div>
-  <a class="waves-effect waves-light red btn" id="selectedBox">Delete Selected</a>
+ 
 <ul class="collection" id="prodsList">
 <?php
 
@@ -145,12 +146,15 @@ $result = mysqli_query($db, $query);
                 $updated = $row['updated'];
                 $des = $row['productDescription'];
                 $price = $row['productPrice']; ?>
+
                 <div>
                 
                
                     <li id="<?php
                         echo $row['productID']; ?>" class="collection-item avatar">
-                        <img src="images/<?php echo $name; ?>.jpg" alt="" class="circle">
+                        <img src="products/<?php echo $row['proimg']; ?>" alt="" class="circle"
+
+                        >
                         <span class="title">
                         <?php
                         echo $name; ?>
@@ -173,10 +177,10 @@ $result = mysqli_query($db, $query);
                         <button  id="dltPrd" class="lighten-2 waves-effect waves-light btn" onclick=" moses2('<?php echo $row['productID']; ?>')">Delete</button>
                         </div>
                         <form id="form" action="prodpic.php" method="post" enctype="multipart/form-data"> 
-                        <input type="email" class="form-control" id="email" name="email" placeholder="Enter email" hidden value="<?php echo $row['productID']; ?>" />
+                        <input type="number" class="form-control" id="email" name="email" placeholder="Enter email" hidden value="<?php echo $row['productID']; ?>" />
                         <input id="uploadImage" type="file" accept="image/*" name="image" />
-                        <div id="preview"><img src="filed.png" /></div><br>
-                        <input class="btn btn-success" type="submit" value="Upload Picture"  onclick=" pic('<?php echo $row['productID']; ?>')">
+                        
+<input class="btn btn-success" type="submit" value="Upload Picture"onclick="pic('<?php echo $row['productID']; ?>')">
                         </form>
                         <div id="err"></div>
                         <a class="secondary-content" >
@@ -395,11 +399,9 @@ if(ids !== null && ids !=='')
 
 <script>
     $(document).ready(function (e) {
- function pic(proid) {
-    $("#form").on('submit',(function(e) {
-  alert(proid);
  
-  e.preventDefault();
+$("#form").on('submit',(function(e) {
+        e.preventDefault();
   $.ajax({
     url: "prodpic.php",
    type: "POST",
@@ -413,6 +415,7 @@ if(ids !== null && ids !=='')
     $("#err").fadeOut();
    },
    success: function(data)
+   $('#err').html(data);
       {
     if(data=='invalid')
     {
@@ -431,8 +434,11 @@ if(ids !== null && ids !=='')
     $("#err").html(e).fadeIn();
       }          
     });
+        
  }));
- }     
+     
+
+
 
 });
     

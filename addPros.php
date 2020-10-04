@@ -1,9 +1,8 @@
-
 <?php
 include 'connect.php';
 session_start();
 $errors = array();
-$name = $_POST['name'];
+$name = strtoupper($_POST['name']);
 $price = $_POST['price'];
 $des = $_POST['des'];
 $stock = $_POST['stock'];

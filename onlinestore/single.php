@@ -33,23 +33,22 @@ if (empty($_SESSION['phone'])) {
 $value = $_GET['productID'];
 
 
-    $query = "SELECT * FROM `product` WHERE `productID` = '$value'";
-    $result = mysqli_query($db, $query);
+$query = "SELECT * FROM `product` WHERE `productID` = '$value'";
+$result = mysqli_query($db, $query);
 
-    if($result) {
-       
-        if(mysqli_num_rows($result) > 0)
-        {
-            while($row = mysqli_fetch_array($result))
-            {
-                $productID = $row['productID'];
-                $productName = $row['productName'];
-                $productDescription = $row['productDescription'];
-                $productPrice = $row['productPrice'];
-                //$proimg = $row['update'];
-            }
+if ($result) {
+
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_array($result)) {
+            $productID = $row['productID'];
+            $productName = $row['productName'];
+            $productDescription = $row['productDescription'];
+            $productPrice = $row['productPrice'];
+            $proimg = $row['proimg'];
+            //$proimg = $row['update'];
         }
     }
+}
 
 include '../errors.php';
 ?>
@@ -60,50 +59,50 @@ include '../errors.php';
 <head>
     <title>Bulk Buyers | Single</title>
     <!-- for-mobile-apps -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Electronic Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 	SmartPhone Compatible web template, free web designs for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript">
-    addEventListener("load", function() {
-        setTimeout(hideURLbar, 0);
-    }, false);
+    <script type="application/x-javascript">
+        addEventListener("load", function() {
+            setTimeout(hideURLbar, 0);
+        }, false);
 
-    function hideURLbar() {
-        window.scrollTo(0, 1);
-    }
-</script>
-<!-- //for-mobile-apps -->
-<!-- Custom Theme files -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
-<!-- //Custom Theme files -->
-<!-- font-awesome icons -->
-<link href="css/font-awesome.css" rel="stylesheet">
-<!-- //font-awesome icons -->
-<!-- js -->
-<script src="js/jquery.min.js"></script>
-<!-- //js -->
-<!-- web fonts -->
-<link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
-<link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
-<!-- //web fonts -->
-<!-- for bootstrap working -->
-<script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
-<!-- //for bootstrap working -->
-<!-- start-smooth-scrolling -->
-<script type="text/javascript">
-    jQuery(document).ready(function($) {
-        $(".scroll").click(function(event) {
-            event.preventDefault();
-            $('html,body').animate({
-                scrollTop: $(this.hash).offset().top
-            }, 1000);
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- //for-mobile-apps -->
+    <!-- Custom Theme files -->
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/fasthover.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- //Custom Theme files -->
+    <!-- font-awesome icons -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- //font-awesome icons -->
+    <!-- js -->
+    <script src="js/jquery.min.js"></script>
+    <!-- //js -->
+    <!-- web fonts -->
+    <link href='//fonts.googleapis.com/css?family=Glegoo:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+    <!-- //web fonts -->
+    <!-- for bootstrap working -->
+    <script type="text/javascript" src="js/bootstrap-3.1.1.min.js"></script>
+    <!-- //for bootstrap working -->
+    <!-- start-smooth-scrolling -->
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $(".scroll").click(function(event) {
+                event.preventDefault();
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
         });
-    });
-</script>
-<!-- //end-smooth-scrolling -->
+    </script>
+    <!-- //end-smooth-scrolling -->
 </head>
 
 <body>
@@ -215,15 +214,17 @@ include '../errors.php';
             <div class="col-md-4 single-left">
                 <div class="flexslider">
                     <ul class="slides">
-                        <li data-thumb="images/a.jpg">
-                            <div class="thumb-image"> <img src="images/a.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+                        <li data-thumb="<?php echo '../products/' . $proimg; ?>">
+                            <div class="thumb-image"> <img src="<?php echo '../products/' . $proimg; ?>" data-imagezoom="true" class="img-responsive" alt=""> </div>
                         </li>
+                        <!--
                         <li data-thumb="images/b.jpg">
                             <div class="thumb-image"> <img src="images/b.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
                         </li>
                         <li data-thumb="images/c.jpg">
                             <div class="thumb-image"> <img src="images/c.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
                         </li>
+                            -->
                     </ul>
                 </div>
                 <!-- flexslider -->
@@ -261,8 +262,9 @@ include '../errors.php';
                 </div>
                 <div class="description">
                     <h5><i>Description:</i></h5>
-                    <p><?php echo $productDescription?>.</p>
+                    <p><?php echo $productDescription ?>.</p>
                 </div>
+
                 <div class="color-quality">
                     <div class="color-quality-left">
                         <h5>Color : </h5>
@@ -274,7 +276,7 @@ include '../errors.php';
                         </ul>
                     </div>
                     <div class="color-quality-right">
-                        <h5>Quality :</h5>
+                        <h5>Quantity :</h5>
                         <div class="quantity">
                             <div class="quantity-select">
                                 <div class="entry value-minus1">&nbsp;</div>
@@ -301,6 +303,8 @@ include '../errors.php';
                     </div>
                     <div class="clearfix"> </div>
                 </div>
+
+                <!-- RAM area
                 <div class="occasional">
                     <h5>RAM :</h5>
                     <div class="colr ert">
@@ -320,13 +324,15 @@ include '../errors.php';
                     </div>
                     <div class="clearfix"> </div>
                 </div>
+                        -->
                 <div class="simpleCart_shelfItem">
-                    <p><span>$460</span> <i class="item_price">R<?php echo $productPrice ?></i></p>
+                    <p><i class="item_price">R<?php echo $productPrice ?></i></p>
                     <form action="#" method="post">
                         <input type="hidden" name="cmd" value="_cart">
                         <input type="hidden" name="add" value="1">
-                        <input type="hidden" name="w3ls_item" value="<?php echo $productName?>">
+                        <input type="hidden" name="w3ls_item" value="<?php echo $productName ?>">
                         <input type="hidden" name="amount" value="<?php echo $productPrice ?>">
+                        <input type="hidden" name="productID" value="<?php echo $productID ?>">
                         <button type="submit" class="w3ls-cart">Add to cart</button>
                     </form>
                 </div>
@@ -447,125 +453,57 @@ include '../errors.php';
         <div class="container">
             <h3>Related Products</h3>
             <ul id="flexiselDemo2">
-                <li>
-                    <div class="w3l_related_products_grid">
-                        <div class="agile_ecommerce_tab_left mobiles_grid">
-                            <div class="hs-wrapper hs-wrapper3">
-                                <img src="images/34.jpg" alt=" " class="img-responsive" />
-                                <img src="images/35.jpg" alt=" " class="img-responsive" />
-                                <img src="images/27.jpg" alt=" " class="img-responsive" />
-                                <img src="images/28.jpg" alt=" " class="img-responsive" />
-                                <img src="images/37.jpg" alt=" " class="img-responsive" />
-                                <div class="w3_hs_bottom">
-                                    <div class="flex_ecommerce">
-                                        <a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                <?php
+                $query = "SELECT * FROM product";
+                $result = mysqli_query($db, $query);
+
+                if ($result) {
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_array($result)) {
+                            $productName = $row['productName'];
+                            $productPrice = $row['productPrice'];
+                            $productID = $row['productID'];
+                            $productDescription = $row['productDescription'];
+                            $proimg = $row['proimg'];
+                            $update = $row['updated'];
+
+                            ?>
+                            <li>
+                                <div class="w3l_related_products_grid">
+                                    <div class="agile_ecommerce_tab_left mobiles_grid">
+                                        <div class="hs-wrapper hs-wrapper3">
+                                            <img src="<?php echo '../products/' . $proimg; ?>" alt=" " class="img-responsive" />
+                                            <img src="<?php echo '../products/' . $proimg; ?>" alt=" " class="img-responsive" />
+                                            <img src="<?php echo '../products/' . $proimg; ?>" alt=" " class="img-responsive" />
+                                            <img src="<?php echo '../products/' . $proimg; ?>" alt=" " class="img-responsive" />
+                                            <img src="<?php echo '../products/' . $proimg; ?>" alt=" " class="img-responsive" />
+
+                                            <div class="w3_hs_bottom">
+                                                <div class="flex_ecommerce">
+                                                    <a href="#" data-toggle="modal" data-target="#myModal6"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <h5><a href="single.php?productID=<?php echo $productID ?>"><?php echo $productName ?></a></h5>
+                                        <div class="simpleCart_shelfItem">
+                                            <p class="flexisel_ecommerce_cart"><i class="item_price"><?php echo $productPrice ?></i></p>
+                                            <form action="#" method="post">
+                                                <input type="hidden" name="cmd" value="_cart">
+                                                <input type="hidden" name="add" value="1">
+                                                <input type="hidden" name="w3ls_item" value="<?php echo $productName ?>">
+                                                <input type="hidden" name="amount" value="<?php echo $productPrice ?>">
+                                                <input type="hidden" name="productID" value="<?php echo $productID ?>">
+                                                <button type="submit" class="w3ls-cart">Add to cart</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <h5><a href="single.html">Kid's Toy</a></h5>
-                            <div class="simpleCart_shelfItem">
-                                <p class="flexisel_ecommerce_cart"><span>$150</span> <i class="item_price">$100</i></p>
-                                <form action="#" method="post">
-                                    <input type="hidden" name="cmd" value="_cart">
-                                    <input type="hidden" name="add" value="1">
-                                    <input type="hidden" name="w3ls_item" value="Kid's Toy">
-                                    <input type="hidden" name="amount" value="100.00">
-                                    <button type="submit" class="w3ls-cart">Add to cart</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="w3l_related_products_grid">
-                        <div class="agile_ecommerce_tab_left mobiles_grid">
-                            <div class="hs-wrapper hs-wrapper3">
-                                <img src="images/36.jpg" alt=" " class="img-responsive" />
-                                <img src="images/32.jpg" alt=" " class="img-responsive" />
-                                <img src="images/33.jpg" alt=" " class="img-responsive" />
-                                <img src="images/32.jpg" alt=" " class="img-responsive" />
-                                <img src="images/36.jpg" alt=" " class="img-responsive" />
-                                <div class="w3_hs_bottom">
-                                    <div class="flex_ecommerce">
-                                        <a href="#" data-toggle="modal" data-target="#myModal5"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <h5><a href="single.html">Vacuum Cleaner</a></h5>
-                            <div class="simpleCart_shelfItem">
-                                <p class="flexisel_ecommerce_cart"><span>$960</span> <i class="item_price">$920</i></p>
-                                <form action="#" method="post">
-                                    <input type="hidden" name="cmd" value="_cart" />
-                                    <input type="hidden" name="add" value="1" />
-                                    <input type="hidden" name="w3ls_item" value="Vacuum Cleaner" />
-                                    <input type="hidden" name="amount" value="920.00" />
-                                    <button type="submit" class="w3ls-cart">Add to cart</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="w3l_related_products_grid">
-                        <div class="agile_ecommerce_tab_left mobiles_grid">
-                            <div class="hs-wrapper hs-wrapper3">
-                                <img src="images/38.jpg" alt=" " class="img-responsive" />
-                                <img src="images/37.jpg" alt=" " class="img-responsive" />
-                                <img src="images/27.jpg" alt=" " class="img-responsive" />
-                                <img src="images/28.jpg" alt=" " class="img-responsive" />
-                                <img src="images/37.jpg" alt=" " class="img-responsive" />
-                                <div class="w3_hs_bottom">
-                                    <div class="flex_ecommerce">
-                                        <a href="#" data-toggle="modal" data-target="#myModal3"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <h5><a href="single.html">Microwave Oven</a></h5>
-                            <div class="simpleCart_shelfItem">
-                                <p class="flexisel_ecommerce_cart"><span>$650</span> <i class="item_price">$645</i></p>
-                                <form action="#" method="post">
-                                    <input type="hidden" name="cmd" value="_cart" />
-                                    <input type="hidden" name="add" value="1" />
-                                    <input type="hidden" name="w3ls_item" value="Microwave Oven" />
-                                    <input type="hidden" name="amount" value="645.00" />
-                                    <button type="submit" class="w3ls-cart">Add to cart</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <div class="w3l_related_products_grid">
-                        <div class="agile_ecommerce_tab_left mobiles_grid">
-                            <div class="hs-wrapper hs-wrapper3">
-                                <img src="images/p3.jpg" alt=" " class="img-responsive" />
-                                <img src="images/p5.jpg" alt=" " class="img-responsive" />
-                                <img src="images/p4.jpg" alt=" " class="img-responsive" />
-                                <img src="images/p2.jpg" alt=" " class="img-responsive" />
-                                <img src="images/p1.jpg" alt=" " class="img-responsive" />
-                                <div class="w3_hs_bottom">
-                                    <div class="flex_ecommerce">
-                                        <a href="#" data-toggle="modal" data-target="#myModal4"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <h5><a href="single.html">Music MP3 Player</a></h5>
-                            <div class="simpleCart_shelfItem">
-                                <p><span>$60</span> <i class="item_price">$58</i></p>
-                                <form action="#" method="post">
-                                    <input type="hidden" name="cmd" value="_cart" />
-                                    <input type="hidden" name="add" value="1" />
-                                    <input type="hidden" name="w3ls_item" value="Ultra MP3 Player" />
-                                    <input type="hidden" name="amount" value="58.00" />
-                                    <button type="submit" class="w3ls-cart">Add to cart</button>
-                                </form>
-                            </div>
-                            <div class="mobiles_grid_pos">
-                                <h6>New</h6>
-                            </div>
-                        </div>
-                    </div>
-                </li>
+                            </li>
+                <?php
+                        }
+                    }
+                }
+                ?>
             </ul>
 
             <script type="text/javascript">
@@ -579,11 +517,11 @@ include '../errors.php';
                         enableResponsiveBreakpoints: true,
                         responsiveBreakpoints: {
                             portrait: {
-                                changePoint: 480,
+                                changePoint: 568,
                                 visibleItems: 1
                             },
                             landscape: {
-                                changePoint: 640,
+                                changePoint: 667,
                                 visibleItems: 2
                             },
                             tablet: {
@@ -642,7 +580,7 @@ include '../errors.php';
                                     <button type="submit" class="w3ls-cart">Add to cart</button>
                                 </form>
                             </div>
-                            <h5>Color</h5>
+                            <h5>Colour</h5>
                             <div class="color-quality">
                                 <ul>
                                     <li><a href="#"><span></span></a></li>
@@ -870,8 +808,6 @@ include '../errors.php';
                 for (i = 0, len = items.length; i < len; i++) {}
             }
         });
-
-        
     </script>
     <!-- //cart-js -->
 

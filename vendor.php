@@ -107,6 +107,11 @@ include 'errors.php';
     <li><a href="collapsible.html">JavaScript</a></li>
   </ul>
 
+  
+
+<!-- Modal Structure -->
+
+
   <!--modal to add prods-->
   <div id="addProdMod" class="modal modal-fixed-footer valign-wrapper" style="width:50%">
 
@@ -136,7 +141,8 @@ include 'errors.php';
  <form id="form" action="ajaxupload.php" method="post" enctype="multipart/form-data"> 
 
  <input id="uploadImage" type="file" accept="image/*" name="image" />
-<div id="preview"><img src="filed.png" /></div><br>
+ 
+
 <input class="btn btn-success" type="submit" value="Upload Picture">
 
   
@@ -244,6 +250,7 @@ include 'errors.php';
     $(document).ready(function (e) {
       
  $("#form").on('submit',(function(e) {
+   alert("pressed");
   var something =$('#uploadImage').val();
  
   e.preventDefault();
@@ -260,6 +267,7 @@ include 'errors.php';
     $("#err").fadeOut();
    },
    success: function(data)
+   $('#err').html(data);
       {
     if(data=='invalid')
     {
